@@ -1,0 +1,24 @@
+<div class="container center">
+  <div class="max-w-500">
+    <mat-card>
+      <h1>Calculadora de múltiplos</h1>
+      <mat-card-content>
+        <div fxLayout="column">
+          <mat-form-field [hideRequiredMarker]="true">
+            <input type="number" #miNumero matInput placeholder="Ingresa un número" required />
+          </mat-form-field>
+          <br />
+          <button (click)="buscarMultiplos()" mat-raised-button color="primary" type="submit">
+            <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+            <span translate>Calcular</span>
+          </button>
+        </div>
+        <br />
+        <mat-divider></mat-divider>
+        <br />
+        <h3 *ngIf="outputList.length > 0">Historial:</h3>
+        <div *ngFor="let output of outputList" [class]="output.color">{{ output.numero }} [{{ output.multiplos }}]</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

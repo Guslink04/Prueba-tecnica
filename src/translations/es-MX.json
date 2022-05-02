@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "Prueba de admisión",
+  "About": "Acerca de",
+  "Hello world !": "Hola mundo !",
+  "Home": "Home",
+  "Logged in as": "Inició sesión como",
+  "Login": "Iniciar sesión",
+  "Logout": "Cerrar sesión",
+  "Password": "Contraseña",
+  "Password is required": "La contraseña es requerida",
+  "Username": "Nombre de usuario",
+  "Username is required": "El nombre de usuario es requerido",
+  "Username or password incorrect.": "El nombre de usuario o la contraseña son incorrectas",
+  "Remember me": "Recordar",
+  "Version": "Versión"
+}
