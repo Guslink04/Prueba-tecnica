@@ -7,9 +7,11 @@ import { SharedModule } from '@shared';
 import { MaterialModule } from '@app/material.module';
 import { CalculatorRoutingModule } from './calculator-routing.module';
 import { CalculatorComponent } from './calculator.component';
+import { CalculatorService } from './calculator.service';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, SharedModule, FlexLayoutModule, MaterialModule, CalculatorRoutingModule],
   declarations: [CalculatorComponent],
+  providers: [CalculatorService],
 })
 export class CalculatorModule {}

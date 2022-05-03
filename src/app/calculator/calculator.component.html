@@ -7,6 +7,9 @@
           <mat-form-field [hideRequiredMarker]="true">
             <input type="number" #miNumero matInput placeholder="Ingresa un número" required />
           </mat-form-field>
+          <mat-error *ngIf="errorMsg">
+            <span>{{ errorMsg }}</span>
+          </mat-error>
           <br />
           <button (click)="buscarMultiplos()" mat-raised-button color="primary" type="submit">
             <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
@@ -16,8 +19,10 @@
         <br />
         <mat-divider></mat-divider>
         <br />
-        <h3 *ngIf="outputList.length > 0">Historial:</h3>
-        <div *ngFor="let output of outputList" [class]="output.color">{{ output.numero }} [{{ output.multiplos }}]</div>
+        <h3>Historial:</h3>
+        <div *ngFor="let output of output$ | async" [class]="output.color">
+          {{ output.numero }} [{{ output.multiplos }}]
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

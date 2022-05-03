@@ -12,6 +12,14 @@ import { env } from './.env';
 
 export const environment = {
   production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyDl6Y7dFs6u0M5zBW5vHH2GZDir27GeA_E',
+    authDomain: 'prueba-tecnica-5de87.firebaseapp.com',
+    projectId: 'prueba-tecnica-5de87',
+    storageBucket: 'prueba-tecnica-5de87.appspot.com',
+    messagingSenderId: '290444050447',
+    appId: '1:290444050447:web:e100f887c3b7342f0ea37a',
+  },
   version: env['npm_package_version'] + '-dev',
   serverUrl: '/api',
   defaultLanguage: 'en-US',

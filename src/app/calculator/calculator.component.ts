@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { environment } from '@env/environment';
+import { Firestore, collectionData, collection, addDoc, orderBy } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 interface Output {
   numero: Number;
@@ -20,19 +22,26 @@ export class CalculatorComponent {
 
   @ViewChild('miNumero') miNumero!: ElementRef<HTMLInputElement>;
 
-  constructor() {}
-
+  private outputsCollection: any;
+  output$: Observable<Output[]>;
+  constructor(firestore: Firestore) {
+    this.outputsCollection = collection(firestore, 'outputs');
+    this.output$ = collectionData(this.outputsCollection);
+  }
+  insertOutput(data: Output) {
+    addDoc(this.outputsCollection, data);
+  }
   buscarMultiplos() {
-    const valor = Number(this.miNumero.nativeElement.value);
+    const numero = Number(this.miNumero.nativeElement.value);
     let color: string = '';
     let multiplos: Number[] = [];
 
-    if (valor <= 0) {
+    if (numero <= 0) {
       this.errorMsg = 'El número debe ser mayor a 0';
       return;
     }
     [7, 5, 3].forEach((i) => {
-      if (valor % i == 0) {
+      if (numero % i == 0) {
         if (i === 7) {
           color = 'blue';
         } else if (i === 5) {
@@ -40,12 +49,12 @@ export class CalculatorComponent {
         } else {
           color = 'green';
         }
-        multiplos.push(valor / i);
-        console.log(valor / i);
+        multiplos.push(numero / i);
+        console.log(numero / i);
       }
     });
-    this.outputList.unshift({
-      numero: valor,
+    this.insertOutput({
+      numero,
       color,
       multiplos,
     });
